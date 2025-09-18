@@ -3,7 +3,7 @@ import Movies from "../Movie/Movies";
 import Navbar from "../Navbar/Navbar";
  import Banner from "../Banner/Banner"; 
  import Footer from "../Footer/Footer"; 
- import "./Body.css"; 
+ import "./body.css"; 
  import { getmovies } from "../../Services/Movies";
  import {getseries} from "../../Services/tv";
  function Body() 
