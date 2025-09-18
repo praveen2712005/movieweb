@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./Movies.css";
+import "./movies.css";
 import { imagebaseurl } from "../../constance";
 import { getMovieDetails } from "../../Services/Movies";
 
