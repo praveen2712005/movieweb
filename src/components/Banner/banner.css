@@ -1,0 +1,57 @@
+.banner {
+  width: 100%;
+  height: 70vh;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
+              url("https://via.placeholder.com/1280x720") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 60px 50px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content {
+  max-width: 600px;
+  z-index: 2;
+}
+
+.banner-title {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  margin-bottom: 20px;
+}
+
+.banner-description {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #e5e5e5;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 28px;
+  background: #e50914;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  background: #f40612;
+  box-shadow: 0 6px 18px rgba(229,9,20,0.7);
+}

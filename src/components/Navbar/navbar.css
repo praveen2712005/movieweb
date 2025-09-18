@@ -1,0 +1,75 @@
+.navbar {
+  width: 95%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0 40px;
+  border-radius: 10px;
+  background-color: #111; /* solid dark classic color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar:hover {
+  background-color: #222; /* slight darkening on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #e50914;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03); /* subtle grow effect */
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu div {
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 500;
+  color: #e5e5e5;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.menu div:hover {
+  color: #fff;
+}
+
+/* classic underline effect on hover */
+.menu div::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #e50914;
+  transition: width 0.3s ease;
+}
+
+.menu div:hover::after {
+  width: 100%;
+}
+
+/* remove flashy shimmer/padding hover */
+.menu div:hover {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
