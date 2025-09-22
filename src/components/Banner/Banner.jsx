@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import "./banner.css";
 import { getmovies, getMovieDetails } from "../../Services/Movies";
 import { imagebaseurl } from "../../constance";
+import { useNavigate } from "react-router-dom";
+
 
 function Banner() {
   const [Trending, setTrending] = useState(null);
@@ -84,6 +86,11 @@ function Banner() {
   // Determine which movie data to display
   const displayMovie = showVideo ? currentMovie : Trending;
 
+  const navigate = useNavigate();
+  const showmylist = () => {
+    navigate("/mylist");
+    
+  }
   return (
     <>
       <div
@@ -132,7 +139,7 @@ function Banner() {
               ) : (
                 <div className="btn" onClick={handleCloseVideo}>⏹ Stop</div>
               )}
-              <div className="btn">+ My List</div>
+              <div className="btn" onClick={showmylist}>+ Add to MyList</div>
             </div>
           </div>
         </div>
