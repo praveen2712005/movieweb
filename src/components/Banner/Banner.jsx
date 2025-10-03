@@ -4,34 +4,31 @@ import { getmovies, getMovieDetails } from "../../Services/Movies";
 import { imagebaseurl } from "../../constance";
 import { useNavigate } from "react-router-dom";
 
-
 function Banner() {
   const [Trending, setTrending] = useState(null);
-  const [currentMovie, setCurrentMovie] = useState(null); // Track the movie being played
+  const [currentMovie, setCurrentMovie] = useState(null);
   const [youtubeKey, setYoutubeKey] = useState('');
   const [showVideo, setShowVideo] = useState(false);
-  const [movies, setMovies] = useState([]); // Store all movies
-  const intervalRef = useRef(null); // Reference to the interval
+  const [movies, setMovies] = useState([]);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
       let response = await getmovies();
       if (response?.results?.length > 0) {
-        setMovies(response.results); // Store all movies
+        setMovies(response.results);
         let index = 0;
-        setTrending(response.results[index]); // first movie initially
+        setTrending(response.results[index]);
 
         const startInterval = () => {
           intervalRef.current = setInterval(() => {
-            index = (index + 1) % response.results.length; // cycle through movies
+            index = (index + 1) % response.results.length;
             setTrending(response.results[index]);
           }, 3000);
         };
 
-        // Start the cycling interval
         startInterval();
 
-        // cleanup when component unmounts
         return () => {
           if (intervalRef.current) {
             clearInterval(intervalRef.current);
@@ -46,14 +43,12 @@ function Banner() {
   async function handlePlay(id) {
     try {
       console.log(id, "id --");
-      
-      // Stop the cycling interval
+
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
 
-      // Find the current movie being played
       const playingMovie = movies.find(movie => movie.id === id);
       setCurrentMovie(playingMovie);
 
@@ -71,11 +66,10 @@ function Banner() {
     setYoutubeKey('');
     setCurrentMovie(null);
 
-    // Restart the cycling interval
     if (movies.length > 0) {
       let index = 0;
       setTrending(movies[index]);
-      
+
       intervalRef.current = setInterval(() => {
         index = (index + 1) % movies.length;
         setTrending(movies[index]);
@@ -83,14 +77,14 @@ function Banner() {
     }
   };
 
-  // Determine which movie data to display
   const displayMovie = showVideo ? currentMovie : Trending;
 
   const navigate = useNavigate();
-  const showmylist = () => {
-    navigate("/mylist");
-    
+  function showmylist(id) {
+    console.log(id, "id in banner");
+    navigate(`/mylist/${id}`);
   }
+
   return (
     <>
       <div
@@ -103,7 +97,6 @@ function Banner() {
           backgroundPosition: "center center",
         }}
       >
-        {/* YouTube Video Background */}
         {showVideo && youtubeKey && (
           <div className="video-background">
             <iframe
@@ -139,7 +132,7 @@ function Banner() {
               ) : (
                 <div className="btn" onClick={handleCloseVideo}>⏹ Stop</div>
               )}
-              <div className="btn" onClick={showmylist}>+ Add to MyList</div>
+              <div className="btn" onClick={() => showmylist(Trending.id)}>+ Details</div>
             </div>
           </div>
         </div>

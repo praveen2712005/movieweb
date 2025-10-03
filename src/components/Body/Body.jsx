@@ -42,6 +42,8 @@ import Navbar from "../Navbar/Navbar";
   <div className="body">
     <Movies movies={movies} title="Trending Now" />
     <Movies series={series} title="Top Rated tv series" />
+    <Movies series={series} title="Top Rated tv series" />
+    <Movies movies={movies} title="Trending Now" />
   </div>
 );
     

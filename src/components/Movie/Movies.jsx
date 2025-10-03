@@ -107,7 +107,7 @@ function Movies({ title, movies = [], series = [] }) {
 
               <div className="card-content">
                 <h3 className="movie-title">{obj.title || obj.name}</h3>
-                {/* Removed play/stop buttons - now works on hover */}
+                
               </div>
               <div className="card-overlay"></div>
             </div>
